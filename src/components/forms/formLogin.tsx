@@ -1,10 +1,13 @@
 'use client';
 
+import { MoveLeft } from "lucide-react";
 import { toast } from "sonner";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
+
 
 export function FormLogin() {
     const [email, setEmail] = useState('');
@@ -31,7 +34,6 @@ export function FormLogin() {
 
             const data = await res.json();
 
-            // ⚠️ Ideal: usar cookies httpOnly via backend
             document.cookie = `token=${data.token}; path=/; max-age=86400`;
             document.cookie = `role=${data.user.role}; path=/; max-age=86400`;
 
@@ -44,9 +46,7 @@ export function FormLogin() {
     };
 
     return (
-        <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 w-full">
-            
-            {/* LEFT IMAGE */}
+        <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-2 w-full">
             <div
                 className="hidden md:block relative"
                 style={{
@@ -58,13 +58,19 @@ export function FormLogin() {
                 <div className="absolute inset-0 bg-black/50" />
             </div>
 
-            {/* RIGHT FORM */}
+            <div className="absolute top-10 left-10">
+                <Link href="/">
+                    <div className="bg-red-600 hover:bg-red-700 rounded-2xl backdrop-blur-lg p-2">
+                        <MoveLeft color="white" />
+                    </div>
+                </Link>
+            </div>
+
             <div className="flex items-center justify-center bg-gray-100 p-6">
-                <form 
-                    onSubmit={handleSubmit} 
+                <form
+                    onSubmit={handleSubmit}
                     className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl"
                 >
-                    {/* LOGO */}
                     <div className="flex justify-end mb-4">
                         <Image
                             src="/images/logo-ryu-nobackground.png"
@@ -74,7 +80,6 @@ export function FormLogin() {
                         />
                     </div>
 
-                    {/* TITLE */}
                     <h1 className="text-3xl font-serif mb-2">
                         Entrar na sua conta
                     </h1>
@@ -82,10 +87,8 @@ export function FormLogin() {
                         Acesse sua conta para continuar
                     </p>
 
-
-                    {/* INPUT EMAIL */}
                     <div className="mb-4">
-                        <input 
+                        <input
                             type="email"
                             placeholder="E-mail"
                             value={email}
@@ -96,9 +99,8 @@ export function FormLogin() {
                         />
                     </div>
 
-                    {/* INPUT PASSWORD */}
                     <div className="mb-4">
-                        <input 
+                        <input
                             type="password"
                             placeholder="Senha"
                             value={password}
@@ -109,17 +111,15 @@ export function FormLogin() {
                         />
                     </div>
 
-                    {/* BUTTON */}
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         disabled={loading}
                         className="w-full bg-red-pri text-white font-semibold py-3 rounded-lg 
-                        hover:bg-red-700 transition disabled:opacity-50"
+                        hover:bg-red-700 transition disabled:opacity-50 cursor-pointer"
                     >
                         {loading ? 'Entrando...' : 'Entrar'}
                     </button>
 
-                    {/* FORGOT */}
                     <p className="text-sm text-center mt-4">
                         Esqueceu a senha?{" "}
                         <span className="text-red-pri cursor-pointer hover:underline">
@@ -131,10 +131,3 @@ export function FormLogin() {
         </div>
     );
 };
-
-
-export function CreateUserForm() {
-    return (
-        <h1>Oi Exu</h1>
-    )
-}

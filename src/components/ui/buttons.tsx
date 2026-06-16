@@ -14,3 +14,4 @@ export const DefaultButton = ({ children, className, ...props }:ButtonProps) => 
         </button>
     )
 };
+

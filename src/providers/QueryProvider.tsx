@@ -12,4 +12,15 @@ export function QueryProvider({ children }: { children: React.ReactNode }) {
       {children}
     </QueryClientProvider>
   );
+};
+
+
+const queryClient = new QueryClient();
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  );
 }

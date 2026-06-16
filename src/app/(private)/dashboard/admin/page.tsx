@@ -8,7 +8,8 @@ import { ActivityTable } from '@/components/dashboard/ActivityTable';
 import { getAdminLogs } from '@/lib/api';
 import { Modal } from '@/components/ui/modal';
 import { useState } from 'react';
-import { CreateUserForm } from '@/components/forms/forms';
+import { CreateStudentForm } from '@/components/forms/formCreateUser';
+
 
 export default function AdminDashboard() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,13 +31,13 @@ export default function AdminDashboard() {
     <div className="p-8 space-y-8">
         <h1 className="text-3xl font-serif">Visão Geral do Administrador</h1>
         <div className="flex gap-4 mb-6">
-            <button className="cursor-pointer bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700" onClick={() => setIsModalOpen(true)}>Novo Aluno</button>
+            <button className="cursor-pointer bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700" onClick={() => setIsModalOpen(true)}>Novo Usuário</button>
             <Modal
-                isOpen={setIsModalOpen}
+                isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 title="Cadastrar Novos Usuários"
             >
-                <CreateUserForm />
+                <CreateStudentForm onSuccess={() => setIsModalOpen(false)} />
             </Modal>
             <button className="cursor-pointer bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900">Nova Turma</button>
             <button className="cursor-pointer bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-900">Relatórios</button>

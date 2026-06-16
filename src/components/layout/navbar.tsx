@@ -21,9 +21,11 @@ export const Navbar = () => {
                <Link href="#contact" className="hover:text-[#b3aa92] transition-colors ease-in-out duration-250">Contatos</Link>
             </ul>
 
-            <DefaultButton className="bg-red-pri text-white rounded-2xl hover:text-[#cbc3ad] transition-colors ease-in-out duration-300 uppercase text-sm px-5">
-                <Link href="/login">Login</Link>
-            </DefaultButton>
+            <Link href="/login">
+                <DefaultButton className="bg-red-pri text-white rounded-2xl hover:text-[#cbc3ad] transition-colors ease-in-out duration-300 uppercase text-sm px-5">
+                    Login
+                </DefaultButton>            
+            </Link>
 
         </header>
     )

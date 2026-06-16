@@ -36,7 +36,7 @@ export const getAdminStats = async () => {
 export const Logout = () => {
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.href = '/login'
+    window.location.href = '/'
 };
 
 export const getAdminLogs = async () => {
@@ -52,3 +52,4 @@ export const getAdminLogs = async () => {
   if (!response.ok) throw new Error('Falha ao buscar logs');
   return response.json();
 };
+

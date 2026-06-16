@@ -49,7 +49,7 @@ export function Sidebar() {
 
       <button 
         onClick={Logout}
-        className="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-red-400 hover:bg-black rounded-lg"
+        className="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-red-400 hover:bg-black rounded-lg cursor-pointer"
       >
         <LogOut size={20} />
         <span>Sair</span>
